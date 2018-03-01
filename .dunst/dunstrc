@@ -1,0 +1,57 @@
+[global]
+    monitor = 0
+    follow = mouse
+    geometry = "320x5-15+15"
+    indicate_hidden = yes
+    shrink = no
+    transparency = 0
+    notification_height = 0
+    separator_height = 2
+    padding = 10
+    horizontal_padding = 10
+    frame_width = 2
+    frame_color = "#595959"
+    separator_color = frame
+    sort = yes
+    idle_threshold = 120
+    font = Monospace 8
+    line_height = 0
+    markup = full
+    format = "<span foreground='#E0D2CC'><b>%s %p</b></span>\n%b"
+    alignment = left
+    show_age_threshold = 60
+    word_wrap = yes
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+    icon_folders = /usr/share/icons/Papirus/16x16/status/:/usr/share/icons/Papirus/16x16/devices/
+    sticky_history = yes
+    history_length = 20
+    always_run_script = true
+    startup_notification = false
+    force_xinerama = false
+    title = Dunst
+    class = Dunst
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+grave
+    context = ctrl+shift+period
+
+[urgency_low]
+    background = "#262626"
+    foreground = "#9C938E"
+    timeout = 10
+
+[urgency_normal]
+    background = "#262626"
+    foreground = "#9C938E"
+    timeout = 10
+
+[urgency_critical]
+    background = "#AA8D70"
+    foreground = "#E0D2CC"
+    frame_color = "#9A9497"
+    timeout = 0
