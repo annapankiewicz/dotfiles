@@ -17,6 +17,11 @@ bindsym $mod+F6 exec pactl set-sink-mute 0 toggle
 bindsym $mod+F7 exec pactl set-sink-volume 0 -5%
 bindsym $mod+F8 exec pactl set-sink-volume 0 +5%
 
+# Song controls
+bindsym $mod+F9  exec playerctl previous
+bindsym $mod+F10 exec playerctl play-pause
+bindsym $mod+F11 exec playerctl next
+
 # Lock screen
 bindsym $mod+x exec $HOME/i3lock-color/lock.sh
 
@@ -175,6 +180,13 @@ bar {
 # Startup applications
 exec_always compton -f
 exec_always wal -q -i ~/Pictures/backgrounds/mountain-reflection.jpg
+
+# Start dunst
+exec_always dunst -c $HOME/.config/dunst/dunstrc
+
+# Correctly configure monitors
+# Throw this in a script at some point to clean things up
+exec_always xrandr --auto --output HDMI1 --mode 1920x1080 --left-of eDP1
 
 # Lock screen on timeout
 exec xautolock -time 10 -locker '$HOME/i3lock-color/lock.sh'

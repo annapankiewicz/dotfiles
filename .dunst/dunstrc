@@ -1,7 +1,7 @@
 [global]
     monitor = 0
     follow = mouse
-    geometry = "320x5-15+15"
+    geometry = "320x5-15+25"
     indicate_hidden = yes
     shrink = no
     transparency = 0
@@ -25,7 +25,7 @@
     stack_duplicates = true
     hide_duplicate_count = false
     show_indicators = yes
-    icon_folders = /usr/share/icons/Papirus/16x16/status/:/usr/share/icons/Papirus/16x16/devices/
+    icon_path= /usr/share/icons/Numix/16x16/status/:/usr/share/icons/Numix/16x16/devices/
     sticky_history = yes
     history_length = 20
     always_run_script = true
@@ -34,21 +34,15 @@
     title = Dunst
     class = Dunst
 
-[shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    history = ctrl+grave
-    context = ctrl+shift+period
-
 [urgency_low]
     background = "#262626"
     foreground = "#9C938E"
-    timeout = 10
+    timeout = 15
 
 [urgency_normal]
     background = "#262626"
     foreground = "#9C938E"
-    timeout = 10
+    timeout = 15
 
 [urgency_critical]
     background = "#AA8D70"
