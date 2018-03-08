@@ -1,7 +1,10 @@
 " .vimrc
 
-" Set line numbers
-set number
+set number 	" Set line numbers
+set spell 	" Spell checking
+set showmatch 	" Show matching parentheses/brackets
+set incsearch	" Search as characters are entered
+set hlsearch 	" Highlight all search results
 
 " Show trailing whitespace
 " From http://vim.wikia.com/wiki/Highlight_unwanted_spaces
@@ -16,4 +19,10 @@ autocmd BufWinLeave * call clearmatches()
 syntax on
 
 " Auto indentation
-set autoindent
+set autoindent		" Auto-indent newlines
+set shiftwidth=4	" Number of auto-indent spaces
+set smartindent		" Enable smart indent
+set smarttab		" Enable smart tabs
+set softtabstop=4	" Number of spaces per tab
+" set expandtab 	" tabs are automatically spaces
+
