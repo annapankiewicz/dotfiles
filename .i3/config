@@ -185,8 +185,7 @@ exec_always wal -q -i ~/Pictures/backgrounds/mountain-reflection.jpg
 exec_always dunst -c $HOME/.config/dunst/dunstrc
 
 # Correctly configure monitors
-# Throw this in a script at some point to clean things up
-exec_always xrandr --auto --output HDMI1 --mode 1920x1080 --left-of eDP1
+exec_always --no-startup-id $HOME/.config/screenlayout/auto.sh
 
 # Lock screen on timeout
 exec xautolock -time 10 -locker '$HOME/i3lock-color/lock.sh'
