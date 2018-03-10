@@ -1,7 +1,7 @@
 #!/bin/env bash
 
 if type "xrandr"; then
-	if xrandr --query | grep "connected" | grep "HDM1"
+	if xrandr --query | grep "HDM1 connected"
 	then
 		/bin/bash $HOME/.config/screenlayout/home.sh
 	else

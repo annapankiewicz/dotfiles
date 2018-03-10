@@ -1,7 +1,6 @@
 " .vimrc
 
 set number 	" Set line numbers
-set spell 	" Spell checking
 set showmatch 	" Show matching parentheses/brackets
 set incsearch	" Search as characters are entered
 set hlsearch 	" Highlight all search results
