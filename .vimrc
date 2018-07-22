@@ -4,8 +4,12 @@
 " -----------------------
 call plug#begin('~/.vim/bundle')
 
+Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyamp/nerdtree-git-plugin'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-surround'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug '~/.fzf'
 
 call plug#end()
 
