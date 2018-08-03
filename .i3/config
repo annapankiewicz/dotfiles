@@ -78,10 +78,10 @@ bindsym $mod+a focus parent
 # Set dedicated workspaces
 set $ws1 "Primary"
 set $ws2 "Secondary"
-set $ws3 "Chrome"
+set $ws3 "Browser"
 set $ws4 "Spotify"
 set $ws5 "Communication"
-set $ws6 "Virtual Machines"
+set $ws6 "Files"
 set $ws7 "Media"
 set $ws8 "General"
 
@@ -140,19 +140,25 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Set all the colors
 set $bg-color 		#262626
-set $inactive-bg-color	#292929
+set $inactive-bg	#292929
 set $text-color		#e0d2cc
 set $urgent		#a16e6e
 set $accent-color 	#aa8d70
+set $lighter-gray	#dddddd
+set $light-gray		#666666
+set $dark-gray		#292d2e
+set $darker-gray	#212121
+set $darkest-gray	#1a1a1a
 
-# class 		border			backgr		text		indicator
-client.focused		$bg-color		$bg-color	$text-color	#DDDDDD
-client.focused_inactive	$inactive-bg-color $inactive-bg-color	$text-color 	#292D2E
-client.unfocused	$inactive-bg-color $inactive-bg-color	$text-color	#292D2E
-client.urgent		$urgent   $urgent	$text-color	$urgent
-client.placeholder	$inactive-bg-color $inactive-bg-color	$text-color	$inactive-bg-color
-client.background	#212121
+# class 		border		backgr		text		indicator
+client.focused		$bg-color	$bg-color	$text-color	$lighter-gray
+client.focused_inactive	$inactive-bg	$inactive-bg	$text-color 	#dark-gray
+client.unfocused	$inactive-bg	$inactive-bg	$text-color	$dark-gray
+client.urgent		$urgent		$urgent		$text-color	$urgent
+client.placeholder	$inactive-bg	$inactive-bg	$text-color	$inactive-bg
+client.background	$darker-gray
 
 # i3 bar
 bar {
@@ -165,9 +171,9 @@ bar {
 	workspace_buttons yes
 
 	colors {
-		background #1a1a1a
-		statusline #DDDDDD
-		separator  #666666
+		background $darkest-gray
+		statusline $lighter-gray
+		separator  $light-gray
 		# class 		border	   backgr          text
 		focused_workspace	$bg-color  $accent-color   $text-color
 		active_workspace	$bg-color  $bg-color	   $text-color
@@ -179,6 +185,8 @@ bar {
 
 # Startup applications
 exec_always compton -f
+
+# Because I like my terminal colors to match my background
 exec_always wal -q -i ~/Pictures/backgrounds/mountain-reflection.jpg
 
 # Start dunst
