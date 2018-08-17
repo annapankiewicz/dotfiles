@@ -1,0 +1,199 @@
+#i3 config file (v4)
+
+set $mod Mod1
+font pango:monospace 8
+#font pango:DejaVu Sans Mono 8
+
+floating_modifier $mod
+
+new_window none
+
+# Screen brightness
+bindsym $mod+F2 exec xbacklight -dec 10
+bindsym $mod+F3 exec xbacklight -inc 10
+
+# Volume levels
+bindsym $mod+F6 exec pactl set-sink-mute 0 toggle
+bindsym $mod+F7 exec pactl set-sink-volume 0 -5%
+bindsym $mod+F8 exec pactl set-sink-volume 0 +5%
+
+# Song controls
+bindsym $mod+F9  exec playerctl previous
+bindsym $mod+F10 exec playerctl play-pause
+bindsym $mod+F11 exec playerctl next
+
+# Lock screen
+bindsym $mod+x exec $HOME/i3lock-color/lock.sh
+
+# start a terminal
+bindsym $mod+Return exec gnome-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start rofi (a program launcher)
+bindsym $mod+d exec rofi -show run -hide-scrollbar
+
+# change focus with cursor keys
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# move focused windows with cursor keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# Set dedicated workspaces
+set $ws1 "Primary"
+set $ws2 "Secondary"
+set $ws3 "Browser"
+set $ws4 "Spotify"
+set $ws5 "Communication"
+set $ws6 "Files"
+set $ws7 "Media"
+set $ws8 "General"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Set all the colors
+set $bg-color 		#262626
+set $inactive-bg	#292929
+set $text-color		#e0d2cc
+set $urgent		#a16e6e
+set $accent-color 	#aa8d70
+set $lighter-gray	#dddddd
+set $light-gray		#666666
+set $dark-gray		#292d2e
+set $darker-gray	#212121
+set $darkest-gray	#1a1a1a
+
+# class 		border		backgr		text		indicator
+client.focused		$bg-color	$bg-color	$text-color	$lighter-gray
+client.focused_inactive	$inactive-bg	$inactive-bg	$text-color 	#dark-gray
+client.unfocused	$inactive-bg	$inactive-bg	$text-color	$dark-gray
+client.urgent		$urgent		$urgent		$text-color	$urgent
+client.placeholder	$inactive-bg	$inactive-bg	$text-color	$inactive-bg
+client.background	$darker-gray
+
+# i3 bar
+bar {
+        status_command i3blocks
+	bindsym button4 nop
+	bindsym button5 nop
+	position top
+	tray_output primary
+	separator_symbol "·"
+	workspace_buttons yes
+
+	colors {
+		background $darkest-gray
+		statusline $lighter-gray
+		separator  $light-gray
+		# class 		border	   backgr          text
+		focused_workspace	$bg-color  $accent-color   $text-color
+		active_workspace	$bg-color  $bg-color	   $text-color
+		inactive_workspace	$bg-color  $bg-color       $text-color
+		urgent_workspace	$urgent    $urgent	   $text-color
+
+	}
+}
+
+# Startup applications
+exec_always compton -f
+
+# Because I like my terminal colors to match my background
+exec_always wal -q -i ~/Pictures/backgrounds/mountain-reflection.jpg
+
+# Start dunst
+exec_always dunst -c $HOME/.config/dunst/dunstrc
+
+# Correctly configure monitors
+exec_always --no-startup-id $HOME/.config/screenlayout/auto.sh
+
+# Lock screen on timeout
+exec xautolock -time 10 -locker '$HOME/i3lock-color/lock.sh'
